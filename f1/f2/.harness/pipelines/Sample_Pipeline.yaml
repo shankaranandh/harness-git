@@ -36,8 +36,7 @@ pipeline:
                                                     connectorRef: shgithub
                                                     gitFetchType: Branch
                                                     paths:
-                                                        - harness-git/blob/main/values.yaml
-                                                    repoName: https://github.com/shankaranandh
+                                                        - harness-git/values.yaml
                                                     branch: main
                                             skipResourceVersioning: false
                   infrastructure:
