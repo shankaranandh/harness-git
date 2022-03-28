@@ -27,19 +27,6 @@ pipeline:
                                       type: DockerRegistry
                               manifests:
                                   - manifest:
-                                        identifier: values
-                                        type: Values
-                                        spec:
-                                            store:
-                                                type: Github
-                                                spec:
-                                                    connectorRef: shgithub
-                                                    gitFetchType: Branch
-                                                    paths:
-                                                        - values.yaml
-                                                    repoName: harness-git
-                                                    branch: master
-                                  - manifest:
                                         identifier: k8manifest
                                         type: K8sManifest
                                         spec:
