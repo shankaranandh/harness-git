@@ -1,0 +1,14 @@
+connector:
+  name: Harness Splunk Connector
+  identifier: Harness_Splunk_Connector
+  description:
+  orgIdentifier: default
+  projectIdentifier: shfirstproject
+  type: Splunk
+  spec:
+    splunkUrl: https://prd-p-o5iny.splunkcloud.com:8089/services/auth/login/
+    username: sean
+    accountId: SlzWEshcTRyvXNSeW1whUQ
+    delegateSelectors:
+    - shankarh-delegate
+    passwordRef: Splunk_Credentials
