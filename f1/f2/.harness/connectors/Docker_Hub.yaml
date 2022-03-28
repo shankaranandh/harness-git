@@ -1,0 +1,18 @@
+connector:
+  name: Harness Docker Hub Connector
+  identifier: Docker_Hub
+  description:
+  orgIdentifier: default
+  projectIdentifier: shfirstproject
+  type: DockerRegistry
+  spec:
+    dockerRegistryUrl: https://registry.hub.docker.com/
+    providerType: DockerHub
+    auth:
+      type: UsernamePassword
+      spec:
+        username: shankarh79
+        usernameRef: null
+        passwordRef: docker
+    delegateSelectors:
+    - shankarh-k8s
