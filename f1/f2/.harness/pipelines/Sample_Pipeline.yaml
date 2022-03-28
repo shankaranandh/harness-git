@@ -1,0 +1,87 @@
+pipeline:
+    name: "Sample Pipeline "
+    identifier: Sample_Pipeline
+    allowStageExecutions: false
+    projectIdentifier: shfirstproject
+    orgIdentifier: default
+    tags: {}
+    stages:
+        - stage:
+              name: Deploy Artifact
+              identifier: Deploy_Artifact
+              description: ""
+              type: Deployment
+              spec:
+                  serviceConfig:
+                      serviceRef: mysql
+                      serviceDefinition:
+                          type: Kubernetes
+                          spec:
+                              variables: []
+                              artifacts:
+                                  primary:
+                                      spec:
+                                          connectorRef: Docker_Hub
+                                          imagePath: library/mysql
+                                          tag: <+input>
+                                      type: DockerRegistry
+                              manifests:
+                                  - manifest:
+                                        identifier: values
+                                        type: Values
+                                        spec:
+                                            store:
+                                                type: Github
+                                                spec:
+                                                    connectorRef: shgithub
+                                                    gitFetchType: Branch
+                                                    paths:
+                                                        - values.yaml
+                                                    repoName: harness-git
+                                                    branch: master
+                                  - manifest:
+                                        identifier: k8manifest
+                                        type: K8sManifest
+                                        spec:
+                                            store:
+                                                type: Github
+                                                spec:
+                                                    connectorRef: shgithub
+                                                    gitFetchType: Branch
+                                                    paths:
+                                                        - harness-git/blob/main/values.yaml
+                                                    repoName: https://github.com/shankaranandh
+                                                    branch: main
+                                            skipResourceVersioning: false
+                  infrastructure:
+                      environmentRef: Dev
+                      infrastructureDefinition:
+                          type: KubernetesDirect
+                          spec:
+                              connectorRef: k8s_cluster
+                              namespace: harness-delegate-ng
+                              releaseName: release-<+INFRA_KEY>
+                      allowSimultaneousDeployments: false
+                  execution:
+                      steps:
+                          - step:
+                                name: Rollout Deployment
+                                identifier: rolloutDeployment
+                                type: K8sRollingDeploy
+                                timeout: 10m
+                                spec:
+                                    skipDryRun: false
+                      rollbackSteps:
+                          - step:
+                                name: Rollback Rollout Deployment
+                                identifier: rollbackRolloutDeployment
+                                type: K8sRollingRollback
+                                timeout: 10m
+                                spec: {}
+              tags: {}
+              failureStrategies:
+                  - onFailure:
+                        errors:
+                            - AllErrors
+                        action:
+                            type: StageRollback
