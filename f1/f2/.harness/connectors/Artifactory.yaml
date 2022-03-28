@@ -1,0 +1,17 @@
+connector:
+  name: Harness Artifactory Connector
+  identifier: Artifactory
+  description:
+  orgIdentifier: default
+  projectIdentifier: shfirstproject
+  type: Artifactory
+  spec:
+    artifactoryServerUrl: https://shankartest22.jfrog.io/ui/login
+    auth:
+      type: UsernamePassword
+      spec:
+        username: testuser
+        usernameRef: null
+        passwordRef: artifactoryuser
+    delegateSelectors:
+    - shankarh-delegate
