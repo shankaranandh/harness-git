@@ -1,0 +1,18 @@
+connector:
+  name: Harness AWS CodeCommit
+  identifier: Harness_AWS_CodeCommit
+  description:
+  orgIdentifier: default
+  projectIdentifier: shfirstproject
+  type: Codecommit
+  spec:
+    url: https://git-codecommit.us-west-1.amazonaws.com/v1/repos/shankar-test
+    authentication:
+      type: HTTPS
+      spec:
+        type: AWSCredentials
+        spec:
+          accessKey: AKIASEZDBXJSPH6OWQ5O
+          accessKeyRef: null
+          secretKeyRef: AWS_Account_Credentials
+    type: Region
