@@ -1,0 +1,23 @@
+connector:
+  name: Harness Github Connector
+  identifier: shgithub
+  description:
+  orgIdentifier: default
+  projectIdentifier: shfirstproject
+  type: Github
+  spec:
+    url: https://github.com/shankaranandh/harness-git
+    validationRepo: sample-app-java
+    authentication:
+      type: Http
+      spec:
+        type: UsernameToken
+        spec:
+          username: shankaranandh
+          tokenRef: shgithub2
+    apiAccess:
+      type: Token
+      spec:
+        tokenRef: shgithub2
+    executeOnDelegate: false
+    type: Repo
