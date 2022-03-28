@@ -1,0 +1,16 @@
+connector:
+  name: Harness AWS Connector
+  identifier: Harness_AWS_Connector
+  description:
+  orgIdentifier: default
+  projectIdentifier: shfirstproject
+  type: Aws
+  spec:
+    credential:
+      type: ManualConfig
+      spec:
+        accessKey: AKIASEZDBXJSPH6OWQ5O
+        accessKeyRef: null
+        secretKeyRef: AWS_Account_Credentials
+    delegateSelectors:
+    - shankarh-delegate
