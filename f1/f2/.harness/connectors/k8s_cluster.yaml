@@ -1,0 +1,20 @@
+connector:
+  name: k8s cluster
+  identifier: k8s_cluster
+  description:
+  orgIdentifier: default
+  projectIdentifier: shfirstproject
+  type: K8sCluster
+  spec:
+    credential:
+      type: ManualConfig
+      spec:
+        masterUrl: https://7D3CC34B0EF5FD3A891DA030C162985A.sk1.us-west-2.eks.amazonaws.com
+        auth:
+          type: UsernamePassword
+          spec:
+            username: admin
+            usernameRef: null
+            passwordRef: AWS_Account_Credentials
+    delegateSelectors:
+    - shankarh-k8s
