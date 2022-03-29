@@ -36,7 +36,7 @@ pipeline:
                                                     connectorRef: shgithub
                                                     gitFetchType: Branch
                                                     paths:
-                                                        - /harness-git/nginx-app.yaml
+                                                        - /nginx-app.yaml
                                                     branch: main
                                             skipResourceVersioning: false
                   infrastructure:
