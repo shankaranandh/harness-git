@@ -1,0 +1,12 @@
+connector:
+  name: Harness New Relic Connector
+  identifier: Harness_New_Relic_Connector
+  orgIdentifier: default
+  projectIdentifier: shfirstproject
+  type: NewRelic
+  spec:
+    newRelicAccountId: 3076932
+    url: https://insights-api.newrelic.com/
+    apiKeyRef: New_Relic_Account_Credentials
+    delegateSelectors:
+    - shankarh-k8s
